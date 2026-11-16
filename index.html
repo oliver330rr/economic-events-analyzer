@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f4f0" />
+    <meta name="description" content="Uma lista de tarefas simples, com salvamento local no navegador." />
+    <title>Meu dia — Lista de tarefas</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Meu dia, início"><span class="brand-mark">✓</span> meu dia</a>
+        <span class="local-badge"><span class="status-dot"></span> salvo neste dispositivo</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="date-label" id="today-label"></p>
+        <h1 id="page-title">Um passo de cada vez<span>.</span></h1>
+        <p class="lead">Organize suas tarefas e cuide do que importa.</p>
+      </section>
+
+      <section class="task-panel" aria-label="Lista de tarefas">
+        <form id="task-form" class="task-form">
+          <label class="sr-only" for="task-input">Nova tarefa</label>
+          <span class="input-plus" aria-hidden="true">＋</span>
+          <input id="task-input" name="task" type="text" maxlength="180" placeholder="Adicionar uma tarefa..." autocomplete="off" required />
+          <button type="submit" class="add-button">Adicionar</button>
+        </form>
+
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="Filtrar tarefas">
+            <button type="button" class="filter active" data-filter="all" aria-pressed="true">Todas</button>
+            <button type="button" class="filter" data-filter="active" aria-pressed="false">A fazer</button>
+            <button type="button" class="filter" data-filter="done" aria-pressed="false">Concluídas</button>
+          </div>
+          <span id="remaining-count" class="remaining-count" aria-live="polite"></span>
+        </div>
+
+        <ul id="task-list" class="task-list" aria-label="Tarefas"></ul>
+        <div id="empty-state" class="empty-state">
+          <div class="empty-art" aria-hidden="true">✦</div>
+          <strong id="empty-title">Tudo tranquilo por aqui</strong>
+          <p id="empty-copy">Adicione uma tarefa para começar seu dia.</p>
+        </div>
+        <footer class="panel-footer">
+          <span id="total-count"></span>
+          <button id="clear-done" class="clear-button" type="button" disabled>Limpar concluídas</button>
+        </footer>
+      </section>
+
+      <p class="privacy-note">Suas tarefas ficam salvas localmente no seu navegador.</p>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </main>
+  </body>
+</html>
